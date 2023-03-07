@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: simpleapp
+  name: simpleapp
+spec:
+  containers:
+  - image: dinhhuy1997/harness-demo:v1
+    name: simpleapp
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
