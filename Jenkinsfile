@@ -5,7 +5,7 @@ pipeline {
         stage('Build Push Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry-1.docker.io', 'dockerhub') {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
                         // Your Docker build and push steps here
                         echo "============build image==========="
                         def customImage = docker.build('simple-app:v1')
