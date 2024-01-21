@@ -24,6 +24,20 @@ pipeline {
             }
         }
 
+        stage('Install kubectl') {
+            steps {
+                script {
+                    // Download and install kubectl
+                    sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
+                    sh 'chmod +x kubectl'
+                    sh 'sudo mv kubectl /usr/local/bin/'
+
+                    // Verify kubectl installation
+                    sh 'kubectl version --client'
+                }
+            }
+        }
+
         stage('Deploy Application') {
             steps {
                 echo "============Deploy Application==========="
