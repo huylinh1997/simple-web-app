@@ -3,3 +3,7 @@ sudo yum install docker
 
 
 Install plugin  : Generic Webhook Trigger
+
+Webhook  : http://Jenkins_URL/github-webhook/
+www urlencoded 
+Jenkins : GitHub hook trigger for GITScm polling

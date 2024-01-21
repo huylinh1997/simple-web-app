@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: simple-app
+        update: "{{ .Timestamp }}"  # Add a label that changes with each deploy
     spec:
       containers:
       - image: dinhhuy1997/simple-app:latest
