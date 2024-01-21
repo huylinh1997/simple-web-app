@@ -1,2 +1,5 @@
 sudo yum update
 sudo yum install docker
+
+
+Install plugin  : Generic Webhook Trigger
