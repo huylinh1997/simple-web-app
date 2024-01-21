@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'your-docker-image:tag'
+            image 'dinhhuy1997/docker_java_helm:v6'
         }
     }
 
@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo "============build image==========="
                 // Use Docker credentials for authentication
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'your-docker-credentials-id', usernameVariable: 'DOCKER_REGISTRY_USERNAME', passwordVariable: 'DOCKER_REGISTRY_PASSWORD']]) {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_REGISTRY_USERNAME', passwordVariable: 'DOCKER_REGISTRY_PASSWORD']]) {
                     // Build and push Docker image
                     sh "docker build -t dinhhuy1997/simple-app:v1 ."
                     sh "docker login -u \$DOCKER_REGISTRY_USERNAME -p \$DOCKER_REGISTRY_PASSWORD"
