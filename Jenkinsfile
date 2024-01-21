@@ -9,6 +9,7 @@ pipeline {
                         // Your Docker build and push steps here
                         echo "============build image==========="
                         def customImage = docker.build('simple-app:v1')
+                        echo "============Push image==========="
                         customImage.push()
                     }
                 }
