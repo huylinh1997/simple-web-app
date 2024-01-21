@@ -40,8 +40,14 @@ pipeline {
 
         stage('Deploy Application') {
             steps {
-                echo "============Deploy Application==========="
-                sh "kubectl apply -f simpleapp.yaml"
+                script {
+                    def timestamp = sh(script: 'date +%s', returnStdout: true).trim()
+                    // Replace the timestamp placeholder in the template
+                    sh "sed 's/REPLACE_TIMESTAMP/$timestamp/' simpleapp-template.yaml > simpleapp.yaml"
+
+                    echo "============Deploy Application==========="
+                    sh "kubectl apply -f simpleapp.yaml"
+                }
             }
         }
     }

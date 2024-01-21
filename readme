@@ -7,3 +7,9 @@ Install plugin  : Generic Webhook Trigger
 Webhook  : http://Jenkins_URL/github-webhook/
 www urlencoded 
 Jenkins : GitHub hook trigger for GITScm polling
+
+
+timestamp=$(date +%s)
+
+# Replace the placeholder in the template with the current timestamp
+sed "s/REPLACE_TIMESTAMP/$timestamp/" simpleapp-template.yaml > simpleapp.yaml

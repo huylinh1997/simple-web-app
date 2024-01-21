@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: simple-app
-        update: "1705856861"
+        update: "REPLACE_TIMESTAMP"
     spec:
       containers:
       - image: dinhhuy1997/simple-app:latest
