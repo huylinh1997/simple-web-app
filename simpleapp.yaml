@@ -16,7 +16,8 @@ spec:
         app: simple-app
     spec:
       containers:
-      - image: dinhhuy1997/simple-app:v1
+      - image: dinhhuy1997/simple-app:latest
+        imagePullPolicy: Always
         name: simple-app
         resources: {}
 status: {}
