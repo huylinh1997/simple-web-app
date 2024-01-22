@@ -1,5 +1,20 @@
+
+1. ## Install docker in k8s node
 sudo yum update
 sudo yum install docker
+
+2. ## Install docker in jenkins
+sudo apt install docker.io
+
+
+3. ## mount volume /var/run/docker.sock and make privileged
+
+
+4. # setup docker registry
+
+
+5. # Create docker registry secret to pull images
+
 
 
 Install plugin  : Generic Webhook Trigger
@@ -9,7 +24,3 @@ www urlencoded
 Jenkins : GitHub hook trigger for GITScm polling
 
 
-timestamp=$(date +%s)
-
-# Replace the placeholder in the template with the current timestamp
-sed "s/REPLACE_TIMESTAMP/$timestamp/" simpleapp-template.yaml > simpleapp.yaml

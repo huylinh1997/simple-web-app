@@ -1,25 +1,37 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            yamlFile 'kaniko.yaml'
+        }
+    }
+
+    environment {
+        APP_NAME = "simple-app"
+        RELEASE = "1.0.0"
+        DOCKER_USER = "dinhhuy1997"
+        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
+        IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+    }
 
     stages {
-        stage('Build Push Image') {
+        stage("Cleanup Workspace") {
             steps {
-                // script {
-                //     withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-                //         // Your Docker build and push steps here
-                //         echo "============build image==========="
-                //         def customImage = docker.build('simple-app:v1')
-                //         echo "============Push image==========="
-                //         customImage.push()
-                //     }
-                // }
-                echo "============build image==========="
-                // Use Docker credentials for authentication
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_REGISTRY_USERNAME', passwordVariable: 'DOCKER_REGISTRY_PASSWORD']]) {
-                    // Build and push Docker image
-                    sh "docker build -t dinhhuy1997/simple-app ."
-                    sh "docker login -u \$DOCKER_REGISTRY_USERNAME -p \$DOCKER_REGISTRY_PASSWORD"
-                    sh "docker push dinhhuy1997/simple-app"
+                cleanWs()
+            }
+        }
+
+        stage("Checkout from SCM"){
+            steps {
+                git branch: 'cicd', credentialsId: 'github', url: 'https://github.com/huylinh1997/simple-web-app'
+            }
+        }
+
+        stage('Build & Push with Kaniko') {
+            steps {
+                container(name: 'kaniko', shell: '/busybox/sh') {
+                sh '''#!/busybox/sh
+                    /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=${IMAGE_NAME}:${IMAGE_TAG} --destination=${IMAGE_NAME}:latest
+                '''
                 }
             }
         }
