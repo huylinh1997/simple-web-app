@@ -49,15 +49,15 @@ spec:
             }
         }
 
-        stage('Build & Push with Kaniko') {
-            steps {
-                container(name: 'kaniko', shell: '/busybox/sh') {
-                sh '''#!/busybox/sh
-                    /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=${IMAGE_NAME}:${IMAGE_TAG} --destination=${IMAGE_NAME}:latest
-                '''
-                }
-            }
-        }
+        // stage('Build & Push with Kaniko') {
+        //     steps {
+        //         container(name: 'kaniko', shell: '/busybox/sh') {
+        //         sh '''#!/busybox/sh
+        //             /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=${IMAGE_NAME}:${IMAGE_TAG} --destination=${IMAGE_NAME}:latest
+        //         '''
+        //         }
+        //     }
+        // }
 
         stage('Install kubectl') {
             steps {
