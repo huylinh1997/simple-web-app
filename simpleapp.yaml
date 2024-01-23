@@ -19,8 +19,8 @@ spec:
       containers:
       - image: harbor.local:30003/webapp/hello-kaniko:latest
         imagePullPolicy: Always
-        imagePullSecrets:
-        - name: harbor-registry-secret
         name: simple-app
         resources: {}
+      imagePullSecrets:
+      - name: harbor-registry-secret
 status: {}
