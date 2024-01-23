@@ -26,7 +26,7 @@ pipeline {
                         //                  --context `pwd` \
                         //                  --destination=dinhhuy1997/simple-app:${BUILD_NUMBER}
                         sh '''
-                            /kaniko/executor --dockerfile `pwd` /Dockerfile \
+                            /kaniko/executor --dockerfile `pwd`/Dockerfile \
                                              --context `pwd` \
                                              --insecure \
                                              --skip-tls-verify \
