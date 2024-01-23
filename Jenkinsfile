@@ -59,8 +59,8 @@ pipeline {
                     // sh "sed 's/REPLACE_TIMESTAMP/$timestamp/' simpleapp-template.yaml > simpleapp.yaml"
 
                     // echo "============Deploy Application==========="
-                    // sh "kubectl apply -f simpleapp.yaml"
-                    kubectlApply configFile: 'simpleapp.yaml',namespace: 'default'
+                    sh "kubectl apply -f simpleapp.yaml"
+                    // kubectlApply configFile: 'simpleapp.yaml',namespace: 'default'
 
                 }
             }
