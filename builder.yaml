@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: builder
-  serviceAccountName: builder
+  name: jenkins
 spec:
+  serviceAccountName: jenkins
   containers:
   - name: kubectl
     image: joshendriks/alpine-k8s
