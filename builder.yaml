@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: builder
-  serviceAccountName: jenkins
+  serviceAccountName: builder
 spec:
   containers:
   - name: kubectl
