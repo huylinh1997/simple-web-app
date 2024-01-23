@@ -22,10 +22,15 @@ pipeline {
             steps {
                 container(name: 'kaniko') {
                     script{
+                        // /kaniko/executor --dockerfile `pwd`/Dockerfile \
+                        //                  --context `pwd` \
+                        //                  --destination=dinhhuy1997/simple-app:${BUILD_NUMBER}
                         sh '''
-                            /kaniko/executor --dockerfile `pwd`/Dockerfile \
-                                            --context `pwd` \
-                                            --destination=dinhhuy1997/simple-app:${BUILD_NUMBER}
+                            /kaniko/executor --dockerfile `pwd`/Dockerfile \ 
+                                             --context `pwd` \
+                                             --insecure \
+                                             --skip-tls-verify \
+                                            --destination harbor.local:30003/webapp/hello-kaniko:${BUILD_NUMBER}
                         '''
                         }
                     }

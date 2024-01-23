@@ -24,3 +24,9 @@ www urlencoded
 Jenkins : GitHub hook trigger for GITScm polling
 
 
+
+
+kubectl create secret docker-registry docker-credentials \ 
+    --docker-username=<username>  \
+    --docker-password=<password> \
+    --docker-email=<email-address>

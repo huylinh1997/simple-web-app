@@ -14,7 +14,7 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
     command:
-    - /busybox/cat
+    - 'echo "192.168.2.106  harbor.local" > /etc/hosts && /busybox/cat'
     tty: true
     volumeMounts:
       - name: kaniko-secret
@@ -23,7 +23,7 @@ spec:
   volumes:
   - name: kaniko-secret
     secret:
-      secretName: docker-credentials 
+      secretName: harbor-registry-secret
       items:
         - key: .dockerconfigjson
           path: config.json
