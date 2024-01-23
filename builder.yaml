@@ -13,8 +13,8 @@ spec:
     resources: {}
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
-    command:
-      - sh
+    args:
+      - "sh"
       - "-c"
       - "echo '192.168.2.106 harbor.local' >> /etc/hosts && /busybox/cat"
     tty: true
