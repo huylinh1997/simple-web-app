@@ -14,7 +14,9 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
     command:
-    - 'echo "192.168.2.106  harbor.local" > /etc/hosts && /busybox/cat'
+      - sh
+      - "-c"
+      - "echo '192.168.2.106 harbor.local' >> /etc/hosts && sleep 3600"
     tty: true
     volumeMounts:
       - name: kaniko-secret
@@ -27,7 +29,6 @@ spec:
       items:
         - key: .dockerconfigjson
           path: config.json
-
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
