@@ -16,7 +16,7 @@ spec:
     command:
       - sh
       - "-c"
-      - "echo '192.168.2.106 harbor.local' >> /etc/hosts && sleep 3600"
+      - "echo '192.168.2.106 harbor.local' >> /etc/hosts && /busybox/cat"
     tty: true
     volumeMounts:
       - name: kaniko-secret
