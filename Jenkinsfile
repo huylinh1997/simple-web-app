@@ -41,13 +41,8 @@ pipeline {
             steps {
                 container(name: 'kubectl') {
                     script {
-                        // def timestamp = sh(script: 'date +%s', returnStdout: true).trim()
-                        // // Replace the timestamp placeholder in the template
-                        // sh "sed 's/REPLACE_TIMESTAMP/$timestamp/' simpleapp-template.yaml > simpleapp.yaml"
-
                         // echo "============Deploy Application==========="
                         sh "kubectl apply -f simpleapp.yaml"
-                        // kubectlApply configFile: 'simpleapp.yaml',namespace: 'default'
                     }
                 }
             }

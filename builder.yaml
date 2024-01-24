@@ -14,9 +14,6 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
     command:
-      # - sh
-      # - "-c"
-      # - "echo '192.168.2.106 harbor.local' >> /etc/hosts && sleep 3600"
     - /busybox/cat
     tty: true
     volumeMounts:

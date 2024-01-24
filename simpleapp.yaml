@@ -17,7 +17,7 @@ spec:
         update: "1705856861"
     spec:
       containers:
-      - image: harbor.local:30003/webapp/hello-kaniko:latest
+      - image: harbor.local:30003/webapp/hello-kaniko:15
         imagePullPolicy: Always
         name: simple-app
         resources: {}
